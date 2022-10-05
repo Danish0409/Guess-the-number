@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <style>
+        .button-64 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  position: absolute;
+    left: 43%;
+    top: 52%;
+}
+
+.button-64:active,
+.button-64:hover {
+  outline: 0;
+}
+
+.button-64 span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.button-64:hover span {
+  background: none;
+}
+
+@media (min-width: 768px) {
+  .button-64 {
+    font-size: 24px;
+    min-width: 196px;
+  }
+}
+.neonText {
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px #0fa;
+}
+
+  
+body {
+  font-size: 18px;
+  font-family: "Vibur", sans-serif;
+  background-color: #010a01;
+}  
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+  
+h2 {
+    font-size: 2.5rem;
+}
+
+.container {
+  margin-top: 20vh;
+}
+.inp{
+    align-items: center;
+} 
+#tentacles{
+    position: absolute;
+    left: 43%;
+    top: 37%;
+    width: 14%;
+    height: 7%;
+}
+.heading{
+    position: absolute;
+    left: 40%;
+    top: 63%;
+}
+h4{
+    text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+#head3{
+    color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #0fa,
+      0 0 82px #0fa,
+      0 0 92px #0fa,
+      0 0 102px #0fa,
+      0 0 151px rgb(124, 224, 10);
+}
+.tot-guess {
+    position: absolute;
+    left: 3%;
+    top: 40%;
+}
+
+p{
+    text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="neonText">GUESS THE NUMBER</h2> 
+    
+     </div>
+     <div class="inp">
+    <input type="number" id="tentacles" name="tentacles"
+       min="0" max="100">
+    </div>
+<button onclick="play()" class="button-64" role="button"><span class="text">Guess</span></button>
+<div class="heading">
+    <h4 id="head3"style="color: yellow;">?</h4>
+ </div>
+ <div class="tot-guess">
+    <p id="message1"style="color: red;">Total number of guesses:- 0</p>
+ </div>
+
+
+</body>
+    <script>
+        var msg1 = document.getElementById('head3')
+        var answer = Math.floor(Math.random()*100)+1;
+        var msg2 = document.getElementById('message1')
+        var msg3 = document.getElementById('message2')
+        var no_of_guess = 0;
+        function play(){
+            var user_msg = document.getElementById('tentacles').value;
+            if(user_msg < 1 || user_msg > 100){
+                alert("Please enter the number between 1 to 100");
+            }
+            else{
+                no_of_guess+=1;
+                if(user_msg < answer){
+                    msg1.textContent = "Your guessed number is low!"
+                    msg2.textContent = "Total number of guesses:-"+no_of_guess;
+                }
+                else if(user_msg > answer){
+                    msg1.textContent = "Your guessed number is high!"
+                    msg2.textContent = "Total number of guesses:-"+no_of_guess;
+                }
+                else{
+                    msg1.textContent = "Congrats!! You guessed it right";
+                }
+            }
+        }
+    </script>
+</html>
